@@ -5,5 +5,6 @@
 .RDataTmp
 
 #Rcpp files
+src/*.o
 src/*.so
 src/*.dll
