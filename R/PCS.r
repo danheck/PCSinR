@@ -137,6 +137,8 @@
 #'   Psychology Review, 6(4), 283–294. \doi{10.1207/S15327957PSPR0604_03}
 #'
 #' @docType package
+#' @useDynLib PCSinR
+#' @encoding UTF-8
 #' @name PCSinR
 NULL
 #> NULL

@@ -1,9 +1,9 @@
 Package: PCSinR
 Title: Parallel Constraint Satisfaction Networks in R
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: as.person(c(
   "Felix Henninger <mailbox@felixhenninger.com> [aut, cre]",
-  "Daniel W. Heck <dheck@mail.uni-mannheim.de> [aut]"
+  "Daniel W. Heck <heck@uni-mannheim.de> [aut]"
   ))
 URL: https://github.com/felixhenninger/PCSinR
 Description: Parallel Constraint Satisfaction (PCS) models are an increasingly
@@ -21,6 +21,12 @@ Depends:
     R (>= 3.3.1)
 License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
+LazyData: TRUE
+Suggests:
+    testthat
+Imports:
+    Rcpp (>= 0.12.7)
+LinkingTo: Rcpp (>= 0.12.7),
+    RcppArmadillo
 RoxygenNote: 5.0.1
 Suggests: testthat

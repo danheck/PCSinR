@@ -1,0 +1,14 @@
+bibentry("Manual",
+		title="pcsdm: An R package for modeling decision making using parallel-constraint-satisfaction",
+		author="Daniel W. Heck, and Marc Jekel",
+		year="2016",
+		note="(Version 0.1.0)",
+		url="https://github.com/danheck/pcsdm",
+
+		textVersion =
+		paste("Heck, D. W., Jekel, M. (2016). ",
+				"pcsdm: An R package for modeling decision making using parallel-constraint-satisfaction. ",
+				"https://github.com/danheck/pcsdm",
+				sep=""),
+
+		mheader = "To cite pcsdm in publications use:")

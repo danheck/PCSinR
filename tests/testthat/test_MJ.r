@@ -61,12 +61,32 @@ test_that('the convergence criteria correspond to earlier calculations', {
     setNames(c(116), c('criterion_1'))
   )
 
+  ##################### Rcpp version
+  output <- pcs_matrix(
+    interconnection_matrix, state, reset, convergence = "sum"
+  )
+
+  expect_equal(
+    output$iterations,
+    c(116)
+  )
+
 })
+
+
 
 test_that('the energy after convergence corresponds to earlier simulations', {
   output <- PCS_run_from_interconnections(interconnection_matrix)
   expect_equal(
     round(output$iterations[nrow(output$iterations), 'energy'], 6),
+    round(-0.29164326, 6)
+  )
+
+  ###### Rcpp
+  output <- pcs_matrix(interconnection_matrix,
+                       rep(0,nodes), reset = c(1,rep(0,nodes-1)), convergence = "sum")
+  expect_equal(
+    round(output$energy, 6),
     round(-0.29164326, 6)
   )
 })
