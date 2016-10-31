@@ -10,7 +10,7 @@ pcs_matrix(weights, start, reset = start, decay = 0.1, maxiter = 1000,
 \arguments{
 \item{weights}{matrix of connection weights (rows: originating node; columns: incoming node)}
 
-\item{start}{vector of node activations at start}
+\item{start}{vector of node activations in the interval [-1,1] when starting the iterative algorithm}
 
 \item{reset}{vector indicating which node activations should be reset to the activation at start. For nodes with a value of 0, the activation is updated; for any other number (e.g., \code{reset=1}), the respective number replaces the activation.}
 

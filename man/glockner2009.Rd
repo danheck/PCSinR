@@ -25,13 +25,6 @@ Typical decision experiment.
 \examples{
 head(glockner2009)
 
-\dontrun{
-# MM-ML:
-mmml(data = glockner2009, strategy = "TTB",id=1,
-     choice = c(10, 10, 10, 10, 10, 10),
-     time = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833),
-     conf = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833))
-}
 }
 \references{
 Glöckner, A. (2009). Investigating intuitive and deliberate processes statistically: The multiple-measure maximum likelihood strategy classification method. Judgment and Decision Making, 4, 186-199.

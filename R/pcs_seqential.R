@@ -6,17 +6,26 @@
 #' @param c2 positive/negative/hidden/non-available cue values for Option 2
 #' @param t1 true cue values for Option 1 (relevant for hidden cues that are opened sequentially)
 #' @param t2 true cue values for Option 2
+#' @param restart whether to reset the activation of the nodes to zero after novel information becomes (new cue values) available
 #' @inheritParams pcs_multi
 #' @inheritParams pcs_matrix
 #' @examples
+#' ###### each step starts with the most recent activation levels
 #' seq <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
 #'                       t1=c(1,-1,-1), t2=c(-1,NA,1),
-#'                       v=c(.8,.7,.6))
-#' lapply(seq, function(ss) ss[1:5])
+#'                       v=c(.8,.7,.6), restart=FALSE)
+#' sapply(seq, function(ss) ss[1:5])
+#'
+#' ###### each step resets the activation pattern to zero
+#' seq2 <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
+#'                        t1=c(1,-1,-1), t2=c(-1,NA,1),
+#'                        v=c(.8,.7,.6), restart=TRUE)
+#' sapply(seq2, function(ss) ss[1:5])
 #' @export
 pcs_sequential <- function(c1, c2,
                        v,
                        t1, t2,
+                       restart=FALSE,
                        p=1.9,
                        decay=.1,
                        maxiter=1000,
@@ -34,7 +43,14 @@ pcs_sequential <- function(c1, c2,
   res <- list()
   cnt <- 1
   while(any(c1 ==0, na.rm = TRUE) | any(c2 == 0, na.rm = TRUE)){
-    res[[cnt]] <- pcs_search(c1, c2, v, p, decay, maxiter, stability, convergence, lambda)
+    if(cnt == 1){
+      start <- c(1, rep(0, cues+2*cues+2))
+    }else if(!restart){
+      start <- res[[cnt-1]]$activation
+    }
+    res[[cnt]] <- pcs_search(c1, c2, v, start,
+                             p, decay, maxiter,
+                             stability, convergence, lambda)
     search <- res[[cnt]]$search
     if(grepl("opt1", search)){
       # update available cues for Option 1

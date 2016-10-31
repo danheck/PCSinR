@@ -1,0 +1,18 @@
+PCSinR 0.2.1 (October 2016)
+===========
+
+* Option whether to reset activation in stepwise sequential search
+
+PCSinR 0.2.0 (October 2016)
+===========
+
+* Merged with RcppArmadillo functions for speed
+* Multiattribute decisions, search, and sequential search
+* Data set by Glöckner (2009)
+* Luce choice rule and validity weighting function
+* Simple adaptive-toolbox models for comparisons of predictions
+
+PCSinR 0.1.0 (October 2016)
+===========
+
+* Initial release

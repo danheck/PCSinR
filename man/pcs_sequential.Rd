@@ -4,8 +4,9 @@
 \alias{pcs_sequential}
 \title{PCS-DM Sequential Cue Search for Multiattribute Decisions}
 \usage{
-pcs_sequential(c1, c2, v, t1, t2, p = 1.9, decay = 0.1, maxiter = 1000,
-  stability = 10^-6, convergence = "floor", lambda = 2.9)
+pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, p = 1.9, decay = 0.1,
+  maxiter = 1000, stability = 10^-6, convergence = "floor",
+  lambda = 2.9)
 }
 \arguments{
 \item{c1}{positive/negative/hidden/non-available cue values for Option 1 (+/-1 for positive/negative cue values; 0 for hidden cue values; \code{NA} for nonavailable information)}
@@ -17,6 +18,8 @@ pcs_sequential(c1, c2, v, t1, t2, p = 1.9, decay = 0.1, maxiter = 1000,
 \item{t1}{true cue values for Option 1 (relevant for hidden cues that are opened sequentially)}
 
 \item{t2}{true cue values for Option 2}
+
+\item{restart}{whether to reset the activation of the nodes to zero after novel information becomes (new cue values) available}
 
 \item{p}{sensitivity parameter determining weighting of cue validities (see \link{validity_weight})}
 
@@ -34,9 +37,16 @@ pcs_sequential(c1, c2, v, t1, t2, p = 1.9, decay = 0.1, maxiter = 1000,
 Starts with a partially known cue matrix and searches missing cue values sequentially until all cues are known.
 }
 \examples{
+###### each step starts with the most recent activation levels
 seq <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
                       t1=c(1,-1,-1), t2=c(-1,NA,1),
-                      v=c(.8,.7,.6))
-lapply(seq, function(ss) ss[1:5])
+                      v=c(.8,.7,.6), restart=FALSE)
+sapply(seq, function(ss) ss[1:5])
+
+###### each step resets the activation pattern to zero
+seq2 <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
+                       t1=c(1,-1,-1), t2=c(-1,NA,1),
+                       v=c(.8,.7,.6), restart=TRUE)
+sapply(seq2, function(ss) ss[1:5])
 }
 

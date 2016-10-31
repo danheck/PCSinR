@@ -2,7 +2,7 @@
 #'
 #' Takes a weight-matrix as input and performs fast iterated updating in C++
 #' @param weights matrix of connection weights (rows: originating node; columns: incoming node)
-#' @param start vector of node activations at start
+#' @param start vector of node activations in the interval [-1,1] when starting the iterative algorithm
 #' @param reset vector indicating which node activations should be reset to the activation at start. For nodes with a value of 0, the activation is updated; for any other number (e.g., \code{reset=1}), the respective number replaces the activation.
 #' @param decay decay parameter
 #' @param maxiter maximum number of iterations

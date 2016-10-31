@@ -25,3 +25,9 @@ check_pars <- function(p=1.9,
   if(lambda <0)
     stop("Luce's choice-rule parameter 'lambda' must be nonnegative.")
 }
+
+check_start <- function(start, dim){
+  if(length(start) != dim){
+    stop("Length of 'start' does not match the number of cues (should be ", dim,")")
+  }
+}

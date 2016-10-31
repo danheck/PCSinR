@@ -17,11 +17,11 @@
 #' @examples
 #' head(glockner2009)
 #'
-#' \dontrun{
-#' # MM-ML:
-#' mmml(data = glockner2009, strategy = "TTB",id=1,
-#'      choice = c(10, 10, 10, 10, 10, 10),
-#'      time = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833),
-#'      conf = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833))
-#' }
+# \dontrun{
+# # MM-ML:
+# mmml(data = glockner2009, strategy = "TTB",id=1,
+#      choice = c(10, 10, 10, 10, 10, 10),
+#      time = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833),
+#      conf = c(0.167, 0.167, 0.167, 0.167, 0.167, 0.833))
+# }
 "glockner2009"

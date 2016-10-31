@@ -54,7 +54,7 @@ test_that('the convergence criteria correspond to earlier calculations', {
   output <- PCS_run(
     interconnection_matrix, state, resting_levels, reset,
     node_names=node_names
-    )
+  )
 
   expect_equal(
     output$convergence,

@@ -5,14 +5,16 @@
 #' @param c1 cue values for Option 1: +/-1 for positive/negative cue values; 0 for hidden cue value; \code{NA} for non-available cue value)
 #' @inheritParams pcs_multi
 #' @inheritParams pcs_matrix
+#' @param start vector of node activations in the interval [-1,1] at start, ordered as: \code{c(driver, cues, option 1, option 2)}. Default: \code{start=c(1,0,0,...,0)}
 #' @examples
 #' search_next_cue <- pcs_search(c1=c(1,0), c2=c(0,0), v=c(.8,.7))
-#' search_next_cue[1:5]
+#' search_next_cue[1:6]
 #' search_other_option <- pcs_search(c1=c(-1,0), c2=c(0,0), v=c(.8,.7))
-#' search_other_option[1:5]
+#' search_other_option[1:6]
 #' @export
 pcs_search <- function(c1, c2,
                        v,
+                       start=NULL,
                        p=1.9,
                        decay=.1,
                        maxiter=1000,
@@ -72,8 +74,14 @@ pcs_search <- function(c1, c2,
   # check: round(weights, 2)
   # heatmap(weights, NA, NA, symm=T)
 
-  start <- c(1, rep(0, d-1))
-  res <- pcs_matrix_cpp(weights, start, start, decay,
+
+  reset <- c(1, rep(0, d-1))
+  if(is.null(start)){
+    start <- reset
+  }else{
+    check_start(start, dim=d)
+  }
+  res <- pcs_matrix_cpp(weights, start, reset, decay,
                         maxiter = maxiter, stability=stability,
                         convergence=convergence, full=TRUE)
 
