@@ -38,4 +38,7 @@ convergence threshold.
 \details{
 The check requires the following parameters:
 }
+\author{
+Felix Henninger
+}
 

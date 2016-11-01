@@ -6,6 +6,7 @@
 #' @seealso For PCS-DM predictions see \link{pcs_multi}
 #' @examples
 #' toolbox_multi(c1 = c(1,-1,1,1), c2=c(-1,1,1,1), v=c(.9,.8,.7,.6))
+#' @author Daniel Heck
 #' @export
 toolbox_multi <- function(c1, c2, v, error=0.00){
 

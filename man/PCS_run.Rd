@@ -62,4 +62,7 @@ A list representing the model state after all convergence criteria
 matrix and model parameters, according to the mechanism outlines by
 McClelland and Rumelhart (1981).
 }
+\author{
+Felix Henninger
+}
 

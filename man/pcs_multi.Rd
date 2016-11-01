@@ -22,7 +22,7 @@ pcs_multi(c1, c2, v, p = 1.9, decay = 0.1, maxiter = 1000,
 
 \item{stability}{stability criterion that determines convergence(i.e., when to stop iterating)}
 
-\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)}
+\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)}
 
 \item{lambda}{parameter used for Luce's choice rule (\link{luce_choice})}
 }
@@ -33,5 +33,8 @@ PCS-DM for Multiattribute Binary Decisions
 bb <- pcs_multi(c1 = c(-1,1,1), c2 = c(1,-1,-1),
                v = c(.85,.75,.6))
 bb[1:4]
+}
+\author{
+Daniel Heck
 }
 

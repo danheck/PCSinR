@@ -17,4 +17,7 @@ Transforms node-activation to chocie probabilities according to an exponential s
 \examples{
 luce_choice(c(A=-.5, B=.7, C=.3))
 }
+\author{
+Daniel Heck
+}
 

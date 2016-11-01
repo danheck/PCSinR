@@ -18,7 +18,7 @@ pcs_gamble(g1, g2, decay = 0.1, maxiter = 1000, stability = 10^-6,
 
 \item{stability}{stability criterion that determines convergence(i.e., when to stop iterating)}
 
-\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)}
+\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)}
 }
 \description{
 Modeling gambles

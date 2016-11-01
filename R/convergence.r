@@ -28,6 +28,7 @@
 #'   the convergence criterion was met is returned. This last option is of most
 #'   value for debugging convergence.
 #'
+#' @author Felix Henninger
 #' @export
 PCS_convergence_McCandR <- function(iteration, current_energy, memory.matrix,
                                     stability_criterion=10^-6, output="qualitative") {

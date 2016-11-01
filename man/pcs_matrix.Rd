@@ -20,9 +20,9 @@ pcs_matrix(weights, start, reset = start, decay = 0.1, maxiter = 1000,
 
 \item{stability}{stability criterion that determines convergence(i.e., when to stop iterating)}
 
-\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)}
+\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)}
 
-\item{full}{whether to store the node activations of all iterations in a matrix}
+\item{full}{whether to store the activation of all nodes for all iterations in a matrix}
 }
 \description{
 Takes a weight-matrix as input and performs fast iterated updating in C++
@@ -36,5 +36,8 @@ w <- matrix(c(0,     0.047, 0,     0,
               0,     0.01,  0,    -0.2,
               0,   -.01,   -0.2,   0), 4, 4)
 pcs_matrix(w, start = c(1,0,0,0))
+}
+\author{
+Daniel Heck
 }
 

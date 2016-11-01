@@ -6,6 +6,7 @@
 #' @inheritParams pcs_multi
 #' @examples
 #' luce_choice(c(A=-.5, B=.7, C=.3))
+#' @author Daniel Heck
 #' @export
 luce_choice <- function(activation, lambda=2.9){
   if(!is.numeric(activation))

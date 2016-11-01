@@ -7,8 +7,8 @@
 #' @param decay decay parameter
 #' @param maxiter maximum number of iterations
 #' @param stability stability criterion that determines convergence(i.e., when to stop iterating)
-#' @param convergence convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)
-#' @param full whether to store the node activations of all iterations in a matrix
+#' @param convergence convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)
+#' @param full whether to store the activation of all nodes for all iterations in a matrix
 #' @details Note that a network with only bidirectional will result in a symmetric weight matrix.
 #' @examples
 #' w <- matrix(c(0,     0.047, 0,     0,
@@ -18,6 +18,7 @@
 #' pcs_matrix(w, start = c(1,0,0,0))
 #' @importFrom Rcpp evalCpp
 #' @useDynLib PCSinR
+#' @author Daniel Heck
 #' @export
 pcs_matrix <- function(weights,
                        start,
@@ -37,9 +38,13 @@ pcs_matrix <- function(weights,
                         stability,
                         convergence,
                         full)
-  if(!full) res$process <- NULL
-  colnames(res$activation) <- colnames(weights)
+
+  dimnames(res$weights) <- dimnames(weights)
+  rownames(res$activation) <- colnames(res$process) <- colnames(weights)
   if(!is.null(rownames(weights)))
-    colnames(res$activation) <- rownames(weights)
+    colnames(res$activation) <- colnames(res$process) <- rownames(weights)
+  if(!full){
+    res$process <- NULL
+  }
   res
 }

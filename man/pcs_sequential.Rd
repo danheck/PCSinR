@@ -2,7 +2,7 @@
 % Please edit documentation in R/pcs_seqential.R
 \name{pcs_sequential}
 \alias{pcs_sequential}
-\title{PCS-DM Sequential Cue Search for Multiattribute Decisions}
+\title{PCS-DM+S Sequential Cue Search for Multiattribute Decisions}
 \usage{
 pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, bottomup = TRUE,
   p = 1.9, decay = 0.1, maxiter = 1000, stability = 10^-6,
@@ -31,7 +31,7 @@ pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, bottomup = TRUE,
 
 \item{stability}{stability criterion that determines convergence(i.e., when to stop iterating)}
 
-\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)}
+\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)}
 
 \item{lambda}{parameter used for Luce's choice rule (\link{luce_choice})}
 }
@@ -50,5 +50,8 @@ seq2 <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
                        t1=c(1,-1,-1), t2=c(-1,NA,1),
                        v=c(.8,.7,.6), restart=TRUE)
 sapply(seq2, function(ss) ss[1:5])
+}
+\author{
+Daniel Heck
 }
 

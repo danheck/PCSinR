@@ -21,6 +21,9 @@ For modeling strategies such as take-the-best (TTB), equal-weight (EQW), and wei
 \examples{
 toolbox_multi(c1 = c(1,-1,1,1), c2=c(-1,1,1,1), v=c(.9,.8,.7,.6))
 }
+\author{
+Daniel Heck
+}
 \seealso{
 For PCS-DM predictions see \link{pcs_multi}
 }

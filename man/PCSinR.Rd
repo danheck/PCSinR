@@ -114,6 +114,9 @@ judgments and decisions (Glöckner & Betsch, 2008; Glöckner, Hilbig, & Jekel,
 
   Please see the function-specific documentation for additional information
 }
+\author{
+Felix Henninger, Daniel W. Heck
+}
 \references{
 PCS
 

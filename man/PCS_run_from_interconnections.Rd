@@ -56,6 +56,8 @@ result$convergence
 
 # Examine final model state
 result$iterations[nrow(result$iterations),]
-
+}
+\author{
+Felix Henninger
 }
 

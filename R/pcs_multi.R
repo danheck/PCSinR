@@ -10,6 +10,7 @@
 #' bb <- pcs_multi(c1 = c(-1,1,1), c2 = c(1,-1,-1),
 #'                v = c(.85,.75,.6))
 #' bb[1:4]
+#' @author Daniel Heck
 #' @export
 pcs_multi <- function(c1, c2, v,
                      p=1.9,
@@ -38,19 +39,22 @@ pcs_multi <- function(c1, c2, v,
   # Option <-> Option
   weights[dim, dim-1] <- weights[dim-1,dim] <- -.2
 
-  res <- pcs_matrix_cpp(weights, start = c(1, rep(0, dim-1)),
+  res <- pcs_matrix_cpp(weights=weights, start = c(1, rep(0, dim-1)),
                         reset = c(1, rep(0, dim-1)),
-                        decay, maxiter, stability, convergence)
+                        decay=decay, maxiter=maxiter,
+                        stability=stability, convergence=convergence, full=TRUE)
 
   # choice prediction and probability
   activ_options = res$activation[dim + -1:0]
   res$choice <- which.max(activ_options)
   res$prob.option1 <- luce_choice(activ_options)[1]
 
-  rownames(res$activation) <- colnames(res$process) <- names(res$activation) <-
-    c("driver",paste0("cue",1:length(c1)),"option1","option2")
+  res2 <- res[c("choice","iterations","energy","prob.option1","activation","process","weights","convergence")]
 
-  res[c("choice","iterations","energy","prob.option1","activation","process","weights","convergence")]
+  rownames(res2$activation) <- colnames(res2$process) <- names(res2$activation) <-
+    c("driver",paste0("cue",1:length(c1)),"option1","option2")
+  dimnames(res2$weights) <- list("from"=colnames(res2$process), "to"=colnames(res2$process))
+  res2
 }
 # library(microbenchmark)
 # microbenchmark(bb <- pcs_binary(c(-1,1,1), c(1,-1,-1),

@@ -50,6 +50,7 @@
 #'   convergence criteria have been met at which iteration. Together, these
 #'   provide an exhaustive summary of the model's behavior.
 #'
+#' @author Felix Henninger
 #' @export
 PCS_run <- function(interconnection_matrix, initial_state, resting_levels, reset,
                     node_names=NULL, stability_criterion=10^-6, max_iterations=Inf,
@@ -177,7 +178,7 @@ PCS_run <- function(interconnection_matrix, initial_state, resting_levels, reset
 #'
 #' # Examine final model state
 #' result$iterations[nrow(result$iterations),]
-#'
+#' @author Felix Henninger
 #' @export
 PCS_run_from_interconnections <- function(interconnection_matrix,
   convergence_criteria=c(PCS_convergence_McCandR), convergence_names="default") {

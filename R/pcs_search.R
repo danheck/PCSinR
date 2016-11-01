@@ -1,5 +1,5 @@
 
-#' PCS-DM Cue Search for Multiattribute Decisions
+#' PCS-DM+S Cue Search for Multiattribute Decisions
 #'
 #' For modeling the attraction search effect.
 #' @param c1 cue values for Option 1: +/-1 for positive/negative cue values; 0 for hidden cue value; \code{NA} for non-available cue value)
@@ -12,6 +12,7 @@
 #' search_next_cue[1:6]
 #' search_other_option <- pcs_search(c1=c(-1,0), c2=c(0,0), v=c(.8,.7))
 #' search_other_option[1:6]
+#' @author Daniel Heck
 #' @export
 pcs_search <- function(c1, c2,
                        v,
@@ -36,8 +37,7 @@ pcs_search <- function(c1, c2,
              "option1","option2")
   d <- 1 +  length(c1) + length(c1)*2 + 2
   # driver / cues / cue-option combinations / options
-  weights <- matrix(0, d, d,
-                    dimnames=list("from"=names,"to"=names))
+  weights <- matrix(0, d, d)
 
   # Driver <-> Cue
   weights[1,1+1:cues] <- weights[1+1:cues,1] <- validity_weight(v, p = p)
@@ -90,7 +90,6 @@ pcs_search <- function(c1, c2,
                         decay=decay, maxiter = maxiter, stability=stability,
                         convergence=convergence, full=TRUE)
 
-  rownames(res$activation) <- colnames(res$process) <- names
   act <- res$activation
   res$choice = which.max(act[(d-1):d])
   res$prob.option1 = luce_choice(act[-1:0+nrow(act)])[1]
@@ -100,10 +99,15 @@ pcs_search <- function(c1, c2,
   sel.hidden <- !c(is.na(c1),is.na(c2)) & c(c1 == 0, c2 == 0)
   act.co <- act[sel.oc][sel.hidden]
   res$psearch <- luce_choice(act.co, lambda=lambda)
-  names(res$psearch) <- names[sel.oc][sel.hidden]
-  res$search <- names(res$psearch)[which.max(act.co)]
+  cue.val.names <- names[sel.oc][sel.hidden]
+  res$search <- cue.val.names[which.max(act.co)]
 
-  res[c("choice","iterations","search","energy","prob.option1","psearch",
-        "activation","process","weights","convergence")]
+  res2 <- res[c("choice","iterations","search","energy","prob.option1","psearch",
+                "activation","process","weights","convergence")]
+  # res[c(7,1,10,2,8,9,3:6)]
+  rownames(res2$activation) <- colnames(res2$process) <- names
+  dimnames(res2$weights) <-  list("from"=names,"to"=names)
+  names(res2$psearch) <- cue.val.names
+  res2
 }
 

@@ -27,4 +27,7 @@ curve(validity_weight(x, p=.5), xlab="Validity")
 # noncompensatory:
 curve(validity_weight(x, p=2.5), xlab="Validity")
 }
+\author{
+Daniel Heck
+}
 

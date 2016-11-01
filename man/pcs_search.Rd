@@ -2,7 +2,7 @@
 % Please edit documentation in R/pcs_search.R
 \name{pcs_search}
 \alias{pcs_search}
-\title{PCS-DM Cue Search for Multiattribute Decisions}
+\title{PCS-DM+S Cue Search for Multiattribute Decisions}
 \usage{
 pcs_search(c1, c2, v, start = NULL, bottomup = TRUE, p = 1.9,
   decay = 0.1, maxiter = 1000, stability = 10^-6, convergence = "floor",
@@ -27,7 +27,7 @@ pcs_search(c1, c2, v, start = NULL, bottomup = TRUE, p = 1.9,
 
 \item{stability}{stability criterion that determines convergence(i.e., when to stop iterating)}
 
-\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (identical floor of energy/stability for the current vs. remaining 9 nodes), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current and remaining 9 nodes)}
+\item{convergence}{convergence criterion that evaluates the network's energy of the last 10 iterations. One of \code{"floor"} (compare floor of energy/stability for the current energy level vs. that of the last 10 iterations), \code{"sum"} (sum of absolute consecutive energy differences), or \code{"max"} (maximum of the absolute differences between the current energy level vs. that of the last 10 iterations)}
 
 \item{lambda}{parameter used for Luce's choice rule (\link{luce_choice})}
 }
@@ -39,5 +39,8 @@ search_next_cue <- pcs_search(c1=c(1,0), c2=c(0,0), v=c(.8,.7))
 search_next_cue[1:6]
 search_other_option <- pcs_search(c1=c(-1,0), c2=c(0,0), v=c(.8,.7))
 search_other_option[1:6]
+}
+\author{
+Daniel Heck
 }
 

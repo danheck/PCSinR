@@ -140,5 +140,6 @@
 #' @useDynLib PCSinR
 #' @encoding UTF-8
 #' @name PCSinR
+#' @author Felix Henninger, Daniel W. Heck
 NULL
 #> NULL

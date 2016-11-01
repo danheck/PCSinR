@@ -1,8 +1,8 @@
 PCSinR 0.2.2 (November 2016)
 ===========
 
-* Switch to activate bottom-up links in cue-value search
-
+* Option to activate bottom-up links in cue-value search
+* Fix naming of weights/process/activation in pcs_multi and PCS_search
 
 PCSinR 0.2.1 (October 2016)
 ===========

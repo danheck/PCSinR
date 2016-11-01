@@ -1,4 +1,4 @@
-#' PCS-DM Sequential Cue Search for Multiattribute Decisions
+#' PCS-DM+S Sequential Cue Search for Multiattribute Decisions
 #'
 #' Starts with a partially known cue matrix and searches missing cue values sequentially until all cues are known.
 #'
@@ -10,6 +10,7 @@
 #' @inheritParams pcs_multi
 #' @inheritParams pcs_matrix
 #' @inheritParams pcs_search
+#' @author Daniel Heck
 #' @examples
 #' ###### each step starts with the most recent activation levels
 #' seq <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),

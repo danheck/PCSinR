@@ -14,6 +14,7 @@
 #' curve(validity_weight(x, p=.5), xlab="Validity")
 #' # noncompensatory:
 #' curve(validity_weight(x, p=2.5), xlab="Validity")
+#' @author Daniel Heck
 #' @export
 validity_weight <- function(v, p=1.9) {
   check_pars(p)
