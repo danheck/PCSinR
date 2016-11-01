@@ -4,8 +4,8 @@
 \alias{pcs_search}
 \title{PCS-DM Cue Search for Multiattribute Decisions}
 \usage{
-pcs_search(c1, c2, v, start = NULL, p = 1.9, decay = 0.1,
-  maxiter = 1000, stability = 10^-6, convergence = "floor",
+pcs_search(c1, c2, v, start = NULL, bottomup = TRUE, p = 1.9,
+  decay = 0.1, maxiter = 1000, stability = 10^-6, convergence = "floor",
   lambda = 2.9)
 }
 \arguments{
@@ -16,6 +16,8 @@ pcs_search(c1, c2, v, start = NULL, p = 1.9, decay = 0.1,
 \item{v}{vector of cue valdities defined as the probability that cue leads to correct decision if it discriminates between the the options (v=.5 for nonvalid cues)}
 
 \item{start}{vector of node activations in the interval [-1,1] at start, ordered as: \code{c(driver, cues, option 1, option 2)}. Default: \code{start=c(1,0,0,...,0)}}
+
+\item{bottomup}{whether to add unidirectional links from the option nodes to the hidden cue-value nodes (i.e., whether the attention to the options directly affects the attention on hidden cue values)}
 
 \item{p}{sensitivity parameter determining weighting of cue validities (see \link{validity_weight})}
 

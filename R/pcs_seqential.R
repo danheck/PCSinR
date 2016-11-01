@@ -9,6 +9,7 @@
 #' @param restart whether to reset the activation of the nodes to zero after novel information becomes (new cue values) available
 #' @inheritParams pcs_multi
 #' @inheritParams pcs_matrix
+#' @inheritParams pcs_search
 #' @examples
 #' ###### each step starts with the most recent activation levels
 #' seq <- pcs_sequential(c1=c(1,0,0), c2=c(0,NA,1),
@@ -26,6 +27,7 @@ pcs_sequential <- function(c1, c2,
                        v,
                        t1, t2,
                        restart=FALSE,
+                       bottomup=TRUE,
                        p=1.9,
                        decay=.1,
                        maxiter=1000,
@@ -48,9 +50,11 @@ pcs_sequential <- function(c1, c2,
     }else if(!restart){
       start <- res[[cnt-1]]$activation
     }
-    res[[cnt]] <- pcs_search(c1, c2, v, start,
-                             p, decay, maxiter,
-                             stability, convergence, lambda)
+    res[[cnt]] <- pcs_search(c1=c1, c2=c2, v=v,
+                             start=start, bottomup=bottomup,
+                             p=p, decay=decay, maxiter=maxiter,
+                             stability=stability, convergence=convergence,
+                             lambda=lambda)
     search <- res[[cnt]]$search
     if(grepl("opt1", search)){
       # update available cues for Option 1

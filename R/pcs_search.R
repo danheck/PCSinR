@@ -6,6 +6,7 @@
 #' @inheritParams pcs_multi
 #' @inheritParams pcs_matrix
 #' @param start vector of node activations in the interval [-1,1] at start, ordered as: \code{c(driver, cues, option 1, option 2)}. Default: \code{start=c(1,0,0,...,0)}
+#' @param bottomup whether to add unidirectional links from the option nodes to the hidden cue-value nodes (i.e., whether the attention to the options directly affects the attention on hidden cue values)
 #' @examples
 #' search_next_cue <- pcs_search(c1=c(1,0), c2=c(0,0), v=c(.8,.7))
 #' search_next_cue[1:6]
@@ -15,6 +16,7 @@
 pcs_search <- function(c1, c2,
                        v,
                        start=NULL,
+                       bottomup=TRUE,
                        p=1.9,
                        decay=.1,
                        maxiter=1000,
@@ -45,11 +47,13 @@ pcs_search <- function(c1, c2,
   for(cc in 1:cues){
     #### Option 1 ###
     if(is.na(c1[cc])){
+
     }else if(c1[cc] == 0){
       # cue --> cue-option
       weights[1+cc,1+cues+cc] <- .1
       # cue-option <-- option
-      weights[d-1,1+cues+cc] <- .01
+      if(bottomup)
+        weights[d-1,1+cues+cc] <- .01
     }else{
       # cue <-> cue-option
       weights[1+cc,1+cues+cc] <- weights[1+cues+cc,1+cc] <- .1
@@ -63,7 +67,8 @@ pcs_search <- function(c1, c2,
       # cue --> cue-option
       weights[1+cc,1+cues*2+cc] <-.1
       # cue-option <-- option
-      weights[ d,1+cues*2+cc] <- .01
+      if(bottomup)
+        weights[ d,1+cues*2+cc] <- .01
     }else{
       # cue <-> cue-option
       weights[1+cc,1+cues*2+cc] <- weights[1+cues*2+cc,1+cc] <- .1
@@ -81,8 +86,8 @@ pcs_search <- function(c1, c2,
   }else{
     check_start(start, dim=d)
   }
-  res <- pcs_matrix_cpp(weights, start, reset, decay,
-                        maxiter = maxiter, stability=stability,
+  res <- pcs_matrix_cpp(weights=weights, start=start, reset=reset,
+                        decay=decay, maxiter = maxiter, stability=stability,
                         convergence=convergence, full=TRUE)
 
   rownames(res$activation) <- colnames(res$process) <- names

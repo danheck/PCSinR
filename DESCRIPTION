@@ -1,6 +1,6 @@
 Package: PCSinR
 Title: Parallel Constraint Satisfaction Networks in R
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: as.person(c(
   "Felix Henninger <mailbox@felixhenninger.com> [aut, cre]",
   "Daniel W. Heck <heck@uni-mannheim.de> [aut]"

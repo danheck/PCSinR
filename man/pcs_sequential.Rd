@@ -4,9 +4,9 @@
 \alias{pcs_sequential}
 \title{PCS-DM Sequential Cue Search for Multiattribute Decisions}
 \usage{
-pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, p = 1.9, decay = 0.1,
-  maxiter = 1000, stability = 10^-6, convergence = "floor",
-  lambda = 2.9)
+pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, bottomup = TRUE,
+  p = 1.9, decay = 0.1, maxiter = 1000, stability = 10^-6,
+  convergence = "floor", lambda = 2.9)
 }
 \arguments{
 \item{c1}{positive/negative/hidden/non-available cue values for Option 1 (+/-1 for positive/negative cue values; 0 for hidden cue values; \code{NA} for nonavailable information)}
@@ -20,6 +20,8 @@ pcs_sequential(c1, c2, v, t1, t2, restart = FALSE, p = 1.9, decay = 0.1,
 \item{t2}{true cue values for Option 2}
 
 \item{restart}{whether to reset the activation of the nodes to zero after novel information becomes (new cue values) available}
+
+\item{bottomup}{whether to add unidirectional links from the option nodes to the hidden cue-value nodes (i.e., whether the attention to the options directly affects the attention on hidden cue values)}
 
 \item{p}{sensitivity parameter determining weighting of cue validities (see \link{validity_weight})}
 

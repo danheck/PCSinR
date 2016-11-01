@@ -1,7 +1,14 @@
+PCSinR 0.2.2 (November 2016)
+===========
+
+* Switch to activate bottom-up links in cue-value search
+
+
 PCSinR 0.2.1 (October 2016)
 ===========
 
 * Option whether to reset activation in stepwise sequential search
+
 
 PCSinR 0.2.0 (October 2016)
 ===========
@@ -11,6 +18,7 @@ PCSinR 0.2.0 (October 2016)
 * Data set by Glöckner (2009)
 * Luce choice rule and validity weighting function
 * Simple adaptive-toolbox models for comparisons of predictions
+
 
 PCSinR 0.1.0 (October 2016)
 ===========
