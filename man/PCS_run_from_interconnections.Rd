@@ -60,4 +60,3 @@ result$iterations[nrow(result$iterations),]
 \author{
 Felix Henninger
 }
-

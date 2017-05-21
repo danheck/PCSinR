@@ -43,4 +43,3 @@ search_other_option[1:6]
 \author{
 Daniel Heck
 }
-

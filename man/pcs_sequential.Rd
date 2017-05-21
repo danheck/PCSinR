@@ -54,4 +54,3 @@ sapply(seq2, function(ss) ss[1:5])
 \author{
 Daniel Heck
 }
-

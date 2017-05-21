@@ -114,9 +114,7 @@ judgments and decisions (Glöckner & Betsch, 2008; Glöckner, Hilbig, & Jekel,
 
   Please see the function-specific documentation for additional information
 }
-\author{
-Felix Henninger, Daniel W. Heck
-}
+
 \references{
 PCS
 
@@ -151,4 +149,6 @@ PCS
   consistency theories to constraint satisfaction. Personality and Social
   Psychology Review, 6(4), 283–294. \doi{10.1207/S15327957PSPR0604_03}
 }
-
+\author{
+Felix Henninger, Daniel W. Heck
+}

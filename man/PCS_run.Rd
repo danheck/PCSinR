@@ -65,4 +65,3 @@ McClelland and Rumelhart (1981).
 \author{
 Felix Henninger
 }
-

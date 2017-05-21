@@ -40,4 +40,3 @@ pcs_matrix(w, start = c(1,0,0,0))
 \author{
 Daniel Heck
 }
-

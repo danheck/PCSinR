@@ -30,4 +30,3 @@ head(glockner2009)
 Glöckner, A. (2009). Investigating intuitive and deliberate processes statistically: The multiple-measure maximum likelihood strategy classification method. Judgment and Decision Making, 4, 186-199.
 }
 \keyword{datasets}
-

@@ -23,4 +23,3 @@ pcs_gamble(g1, g2, decay = 0.1, maxiter = 1000, stability = 10^-6,
 \description{
 Modeling gambles
 }
-

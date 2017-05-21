@@ -41,4 +41,3 @@ The check requires the following parameters:
 \author{
 Felix Henninger
 }
-

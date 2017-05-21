@@ -37,4 +37,3 @@ bb[1:4]
 \author{
 Daniel Heck
 }
-
