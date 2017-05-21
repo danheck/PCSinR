@@ -18,7 +18,7 @@ Description: Parallel Constraint Satisfaction (PCS) models are an increasingly
     package provides the necessary functions to create and simulate basic
     Parallel Constraint Satisfaction networks within R.
 Depends:
-    R (>= 3.3.1)
+    R (>= 3.3.0)
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: TRUE
@@ -29,4 +29,3 @@ Imports:
 LinkingTo: Rcpp (>= 0.12.7),
     RcppArmadillo
 RoxygenNote: 5.0.1
-Suggests: testthat
