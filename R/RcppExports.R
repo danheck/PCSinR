@@ -21,8 +21,3 @@ pcs_matrix_cpp <- function(weights, start, reset, decay = .1, maxiter = 1000L, s
     .Call('PCSinR_pcs_matrix_cpp', PACKAGE = 'PCSinR', weights, start, reset, decay, maxiter, stability, convergence, full)
 }
 
-#' @export
-timesTwo <- function(x) {
-    .Call('PCSinR_timesTwo', PACKAGE = 'PCSinR', x)
-}
-
