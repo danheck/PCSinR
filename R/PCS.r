@@ -137,7 +137,8 @@
 #'   Psychology Review, 6(4), 283–294. \doi{10.1207/S15327957PSPR0604_03}
 #'
 #' @docType package
-#' @useDynLib PCSinR
+#' @useDynLib PCSinR, .registration=TRUE
+#' @importFrom Rcpp sourceCpp evalCpp
 #' @encoding UTF-8
 #' @name PCSinR
 #' @author Felix Henninger, Daniel W. Heck

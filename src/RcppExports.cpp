@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // activation_function
 arma::vec activation_function(arma::vec activation, arma::vec input, double decay, double floor, double ceiling);
-RcppExport SEXP PCSinR_activation_function(SEXP activationSEXP, SEXP inputSEXP, SEXP decaySEXP, SEXP floorSEXP, SEXP ceilingSEXP) {
+RcppExport SEXP _PCSinR_activation_function(SEXP activationSEXP, SEXP inputSEXP, SEXP decaySEXP, SEXP floorSEXP, SEXP ceilingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -23,7 +23,7 @@ END_RCPP
 }
 // update_activation
 arma::vec update_activation(arma::vec activation, arma::mat weights, double decay, double floor, double ceiling);
-RcppExport SEXP PCSinR_update_activation(SEXP activationSEXP, SEXP weightsSEXP, SEXP decaySEXP, SEXP floorSEXP, SEXP ceilingSEXP) {
+RcppExport SEXP _PCSinR_update_activation(SEXP activationSEXP, SEXP weightsSEXP, SEXP decaySEXP, SEXP floorSEXP, SEXP ceilingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -38,7 +38,7 @@ END_RCPP
 }
 // check_convergence
 bool check_convergence(arma::vec energy, int iter, double stability, String convergence);
-RcppExport SEXP PCSinR_check_convergence(SEXP energySEXP, SEXP iterSEXP, SEXP stabilitySEXP, SEXP convergenceSEXP) {
+RcppExport SEXP _PCSinR_check_convergence(SEXP energySEXP, SEXP iterSEXP, SEXP stabilitySEXP, SEXP convergenceSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -52,7 +52,7 @@ END_RCPP
 }
 // convergence_floor
 bool convergence_floor(arma::vec energy, int iter, double stability);
-RcppExport SEXP PCSinR_convergence_floor(SEXP energySEXP, SEXP iterSEXP, SEXP stabilitySEXP) {
+RcppExport SEXP _PCSinR_convergence_floor(SEXP energySEXP, SEXP iterSEXP, SEXP stabilitySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -65,7 +65,7 @@ END_RCPP
 }
 // pcs_matrix_cpp
 Rcpp::List pcs_matrix_cpp(arma::mat weights, arma::vec start, arma::vec reset, double decay, int maxiter, double stability, String convergence, bool full);
-RcppExport SEXP PCSinR_pcs_matrix_cpp(SEXP weightsSEXP, SEXP startSEXP, SEXP resetSEXP, SEXP decaySEXP, SEXP maxiterSEXP, SEXP stabilitySEXP, SEXP convergenceSEXP, SEXP fullSEXP) {
+RcppExport SEXP _PCSinR_pcs_matrix_cpp(SEXP weightsSEXP, SEXP startSEXP, SEXP resetSEXP, SEXP decaySEXP, SEXP maxiterSEXP, SEXP stabilitySEXP, SEXP convergenceSEXP, SEXP fullSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

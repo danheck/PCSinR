@@ -16,33 +16,19 @@
 #'               0,     0.01,  0,    -0.2,
 #'               0,   -.01,   -0.2,   0), 4, 4)
 #' pcs_matrix(w, start = c(1,0,0,0))
-#' @importFrom Rcpp evalCpp
-#' @useDynLib PCSinR
 #' @author Daniel Heck
 #' @export
-pcs_matrix <- function(weights,
-                       start,
-                       reset = start,
-                       decay=.1,
-                       maxiter = 1000,
-                       stability=10^-6,
-                       convergence="floor",
-                       full=TRUE) {
-  check_pars(decay=decay, maxiter=maxiter, stability=stability)
+pcs_matrix <- function(weights, start, reset = start, decay=.1, maxiter = 1000,
+                       stability = 10^-6, convergence = "floor", full=TRUE) {
 
-  res <- pcs_matrix_cpp(weights,
-                        start,
-                        reset,
-                        decay,
-                        maxiter,
-                        stability,
-                        convergence,
-                        full)
+  check_pars(decay=decay, maxiter=maxiter, stability=stability)
+    res <- pcs_matrix_cpp(weights, start, reset, decay, maxiter, stability,
+                        convergence, full)
 
   dimnames(res$weights) <- dimnames(weights)
-  rownames(res$activation) <- colnames(res$process) <- colnames(weights)
+  names(res$activation) <- colnames(res$process) <- colnames(weights)
   if(!is.null(rownames(weights)))
-    colnames(res$activation) <- colnames(res$process) <- rownames(weights)
+    names(res$activation) <- colnames(res$process) <- rownames(weights)
   if(!full){
     res$process <- NULL
   }
